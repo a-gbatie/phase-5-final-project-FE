@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Card, Image, Icon } from 'semantic-ui-react'
-import Media from './Media'
+import { Container } from 'semantic-ui-react'
+// import Media from './Media'
+import mediaCard from '../styling/mediaCard.css'
 
 export default class MediaCard extends Component {
     state = {
@@ -13,21 +14,23 @@ export default class MediaCard extends Component {
         // console.log(this.props.media?.image)
         console.log(media)
         return (
-
-            <div className="card" onClick={() => this.setState({ clicked: !this.state.clicked })}>
-                {this.state.clicked ? <img src={media?.image} alt={media?.image} fluid size='big' wrapped ui={false}  className="card__image" /> : (
-                <div className="card__content"  >
-                    <div className="card__title">{media?.title}</div>
-                    
-                    <p className="card__text">{ `${media?.title}, ${media?.description}, ${media?.release_date}`}</p>
-                    
-                    <div className="card__detail">
-                        <p>{media?.starring}</p>
-                        <p>{!media?.is_movie ? `${media?.network}, ${media?.seasons}, ${media?.genre}` : `${media?.release_date}`}</p>
+            <Container className="media_container">
+                <div onClick={() => this.setState({ clicked: !this.state.clicked })}>
+                    {this.state.clicked ? <img src={media?.image} alt={media?.image} fluid size='big' wrapped ui={false}  className="card__image" /> : (
+                    <div className="card__content"  >
+                        <div className="card__title">{media?.title}</div>
+                        <p className='seasons'>{media?.seasons} Season(s)</p>
+                        
+                        <p className="card__text">{`${media?.description}`}</p>
+                        
+                        <div className="card__detail">
+                            <p className='starring'>Cast: {media?.starring}</p>
+                            <p className='end_points'>{!media?.is_movie ? `${media?.network} · ${media?.genre}` : `${media?.release_date}`}</p>
+                        </div>
                     </div>
+                    )}
                 </div>
-                )}
-            </div>
+            </Container>
 
             // <div>
             //     <Card>

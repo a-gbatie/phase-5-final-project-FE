@@ -28,10 +28,10 @@ export default class PlatformCollection extends Component {
     render() {
 
         return (
-            <div>
-                <Image.Group size='small'>
+            <div className='platforms'>
+                <Image.Group size='large'>
                     {this.state.platforms.map(platform => (
-                        <Image alt={platform.company} src={platform.image} size='medium'
+                        <Image alt={platform.company} src={platform.image} 
                             onClick={() => this.props.history.push(`/platforms/${platform.company}`)}
                         />))
                     }

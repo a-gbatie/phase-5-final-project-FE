@@ -1,0 +1,67 @@
+.media_container {
+    width: 300px;
+    height: 500px;
+    margin: auto;
+    border: 3px solid green;
+    padding: 5px;
+    /* overflow: hidden; */
+}
+
+.card__image {
+    width: 500px;
+    height: 700px;
+    object-fit: contain;
+}
+
+/* .card__content {
+    text-align: justify;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+} */
+
+.card__title {
+    text-align: center;
+    font-family: monaco;
+    font-size: 35px;
+    font-weight: 100;
+    margin-top: 50px;
+}
+
+.seasons {
+    font-size: 18px;
+    color: grey;
+    font-family: monaco;
+}
+
+.card__text {
+    text-align: justify;
+    text-align: center;
+    font-size: 20px;
+    font-family: monaco;
+    letter-spacing: -2px
+
+}
+
+.starring {
+    text-align: justify;
+    text-align: center;
+    font-size: 14px;
+    font-family: monaco;
+}
+
+.end_points {
+    text-align: justify;
+    text-align: center;
+    font-size: 14px;
+    font-family: monaco;
+    color: grey;
+}
+
+.platforms {
+    width: 500px;
+    height: 350px;
+    display: inline-block;
+}

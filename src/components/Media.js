@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import MediaCard from './MediaCard'
 import { connect } from 'react-redux'
 
@@ -59,9 +59,10 @@ export class Media extends Component {
             <div>
                 
                 <MediaCard media={media.slice(index, index + 1)[0]}/>
-                <Button onClick={ this.handleLikeClick }>Click ME</Button>
-                <Button onClick={ this.updateIndex }>Nope</Button>
-                <Icon />
+                {/* <Button >Click ME</Button>
+                <Button >Nope</Button> */}
+                <Icon inverted color='teal' name='thumbs up' onClick={ this.handleLikeClick } />
+                <Icon inverted color='teal' name='thumbs down' onClick={ this.updateIndex } />
                 
             </div>
         )

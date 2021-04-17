@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom'
 import {createStore, compose} from 'redux'
 import rootReducer from './redux/reducers/rootReducer.js'
 import {Provider} from 'react-redux'
+import 'semantic-ui-css/semantic.min.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(rootReducer, composeEnhancers())

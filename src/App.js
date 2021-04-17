@@ -116,8 +116,6 @@ class App extends React.Component {
             {/* <Route exact path='/platforms/:company' render={this.renderPlatforms} /> */}
             <Route exact path='/platforms/:company' render={this.renderMediaPage} />
             {/* <Route exact path='/platforms/:company/media' render={this.renderCardPage} /> */}
-            {/* <Route exact path='/platforms/:company/tv' render={this.renderCardPage} />
-            <Route exact path='/platforms/:company/movie' render={this.renderCardPage} /> */}
 
             {/* {!user.id && <Redirect to="/login" />} */}
             <Route exact path='/' render={this.renderHomePage} />
