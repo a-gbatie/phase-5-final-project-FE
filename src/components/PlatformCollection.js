@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import Card from './Card.js'
 import { Image } from 'semantic-ui-react'
 
 const API = 'http://localhost:3000'
@@ -28,16 +27,19 @@ export default class PlatformCollection extends Component {
     render() {
 
         return (
-            <div className='platforms'>
-                <Image.Group size='large'>
-                    {this.state.platforms.map(platform => (
-                        <Image alt={platform.company} src={platform.image} 
-                            onClick={() => this.props.history.push(`/platforms/${platform.company}`)}
-                        />))
-                    }
-                </Image.Group>
-
-            </div>
+            <>
+            <div className='bg-platforms'></div>
+                <div className='platforms'>
+                    <Image.Group size='large'>
+                        {this.state.platforms.map(platform => (
+                            <Image alt={platform.company} src={platform.image} 
+                                onClick={() => this.props.history.push(`/platforms/${platform.company}`)}
+                            />))
+                        }
+                    </Image.Group>
+                </div>
+            </>
+        
         )
     }
 

@@ -23,12 +23,15 @@ export class Media extends Component {
         })
             .then((res) => res.json())
             .then((data) => {
+                // console.log(data)
                 this.setState({ media: data })
             })
     }
     handleLikeClick = () => {
         const {index, media}=this.state
         const token = localStorage.token
+        const medium = media.slice(index, index + 1)[0]
+
         fetch(API + 'accepted_media', {
             method: 'POST',
             headers: {
@@ -39,9 +42,10 @@ export class Media extends Component {
             body: JSON.stringify({
 
                 user_id: this.props.user_id,
-                medium_id: media.slice(index, index + 1)[0].id
+                medium_id: medium.id
             })
         })
+            .then(() => this.props.addFavorite(medium))
         this.updateIndex()
     }
 
@@ -53,16 +57,14 @@ export class Media extends Component {
 
     render() {
         // console.log(this.state.media.slice(2,3))
-        console.log(this.props)
+        // console.log(this.props)
         const {index, media}=this.state
         return (
             <div>
                 
-                <MediaCard media={media.slice(index, index + 1)[0]}/>
-                {/* <Button >Click ME</Button>
-                <Button >Nope</Button> */}
-                <Icon inverted color='teal' name='thumbs up' onClick={ this.handleLikeClick } />
-                <Icon inverted color='teal' name='thumbs down' onClick={ this.updateIndex } />
+                <MediaCard media={media.slice(index, index + 1)[0]} />
+                <Icon className='yes' size='huge' inverted color='teal' name='thumbs up' onClick={ this.handleLikeClick } />
+                <Icon className='no' size='huge' inverted color='teal' name='thumbs down' onClick={ this.updateIndex } />
                 
             </div>
         )
@@ -70,12 +72,14 @@ export class Media extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    // console.log(state)
    return { user_id: state.user.id }
 }
 
-const mapDispatchToProps = {
-
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addFavorite: (medium) => dispatch({type: 'ADD_FAVORITE', payload: medium})
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Media)

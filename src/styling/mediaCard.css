@@ -1,48 +1,36 @@
-.media_container {
-    width: 300px;
-    height: 500px;
-    margin: auto;
-    border: 3px solid green;
-    padding: 5px;
+/* .media_container { */
+    /* width: 500px;
+    height: 700px; */
+    /* margin: auto; */
+    /* background-color: black; */
+    /* border: 3px solid green; */
+    /* padding: 5px; */
     /* overflow: hidden; */
-}
+    /* transition: transform .6s linear; */
+    
+/* }  */
 
-.card__image {
+/* .card__image {
     width: 500px;
     height: 700px;
     object-fit: contain;
-}
-
-/* .card__content {
     text-align: justify;
     text-align: center;
     margin-top: 100px;
     margin-bottom: 100px;
     margin-right: 50px;
     margin-left: 50px;
-} */
-
-.card__title {
-    text-align: center;
-    font-family: monaco;
-    font-size: 35px;
-    font-weight: 100;
-    margin-top: 50px;
 }
 
-.seasons {
-    font-size: 18px;
-    color: grey;
-    font-family: monaco;
-}
-
-.card__text {
+.card__content {
+    width: 300px;
+    height: 500px;
     text-align: justify;
     text-align: center;
-    font-size: 20px;
-    font-family: monaco;
-    letter-spacing: -2px
-
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 50px;
+    margin-left: 50px; 
 }
 
 .starring {
@@ -58,10 +46,118 @@
     font-size: 14px;
     font-family: monaco;
     color: grey;
-}
+} 
+
+/* .bg-platforms { */
+    /* background: url(https://img.wallpapersafari.com/desktop/1920/1080/28/17/dCTtGZ.jpg); */
+    /* background: url(https://www.pixelstalk.net/wp-content/uploads/2016/10/Colorful-Abstract-Backgrounds.jpg);
+    background-size: contain; 
+    position: fixed;
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%;   */
+/* } */
 
 .platforms {
-    width: 500px;
-    height: 350px;
-    display: inline-block;
+    margin-top: 30px;
+    /* width: 450px;
+    height: 255.31px; */
+    /* display: inline-block; */
+    /* display: inline-flexbox; */
+    cursor: pointer;
+}
+
+.media_container {
+    background-color: transparent;
+    width: 410px;
+    height: 615px;
+    /* border: 1px solid #f1f1f1; */
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
+}
+  
+.img {
+    max-width: 410px;
+    max-height: 615px;
+    /* object-fit: cover; */
+    /* object-fit: contain; */
+  }
+
+  /* This container is needed to position the front and back side */
+  .inner { 
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .media_container:active .inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .card__image, .card__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  /* .card__image {
+    background-color: #bbb;
+    color: black;
+  } */
+  
+  /* Style the back side */
+  .card__content {
+    max-width: 410px;
+    max-height: 615px;
+    position: absolute;
+    left: 368px;
+    background-color: darkslategrey;
+    color: white;
+    font-family: Monaco;
+    font-size: 16px;
+    transform: rotateY(180deg);
+    padding: 10px;
+}
+
+.card__title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 100;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+.seasons {
+    font-size: 18px;
+    color: grey;
+}
+
+.card__text {
+    text-align: justify;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: -1px
+}
+
+.yes {
+    position: absolute;
+    left: 1000px;
+    bottom: 300px;
+}
+
+.no {
+    position: absolute;
+    right: 1000px;
+    bottom: 300px;
 }

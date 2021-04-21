@@ -1,0 +1,14 @@
+.about_container {
+    width: 800px;
+    height: 500px;
+    padding: 20px;
+    border: 5px solid grey;
+    background-color: #000;
+}
+
+#about_paragraph {
+    font-family: Monaco;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+}

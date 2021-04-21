@@ -1,10 +1,11 @@
 import './App.css'
 import React from 'react'
 import Login from './components/Login'
-import HomePage from './components/HomePage'
 import NavBar from './components/NavBar'
 import Media from './components/Media'
 import Card from './components/MediaCard'
+import Faves from './components/Faves'
+import About from './components/About'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PlatformCollection from './components/PlatformCollection'
@@ -12,10 +13,13 @@ import PlatformCollection from './components/PlatformCollection'
 const API = 'http://localhost:3000'
 
 class App extends React.Component {
-  state = {
-    user: {},
-    error: false
-  }
+  // state = {
+  //   user: {},
+  //   error: false,
+  //   faves: []
+  // }
+
+  // <h1>Bonne Nuit</h1>
 
   componentDidMount() {
     const token = localStorage.token
@@ -36,13 +40,12 @@ class App extends React.Component {
         if (data.user) {
           const { user } = data
           this.props.setUser(user)
-          localStorage.setItem('token', data.jwt)
         }
       })
   }
 
   handleAuthResponse = (data) => {
-    console.log(data)
+    // console.log(data)
     if (data.user) {
       const { user } = data
 
@@ -55,72 +58,38 @@ class App extends React.Component {
     }
   }
 
-  handleLogin = (e, userInfo) => {
-    e.preventDefault()
-    console.log('login', userInfo)
-    fetch(API + '/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userInfo),
-    })
-      .then((res) => res.json())
-      .then((data) => this.handleAuthResponse(data))
-      // .catch(console.log
-  }
-
-  handleSignup = (e, userInfo) => {
-    e.preventDefault();
-    
-    fetch(API + '/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user: userInfo }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        this.handleAuthResponse(data)
-      })
-      // .catch(console.log)
-  }
-
+  
   handleLogout = () => {
     localStorage.clear()
-    this.setState({ user: {} })
+    this.props.setUser({media: []})
   }
 
-  renderLoginPage = () => <Login handleLoginOrSignup={this.handleLogin} showName={false}/>
-  renderSignUpPage = () => <Login handleLoginOrSignup={this.handleSignup} showName={true}/>
-  renderHomePage = () => <HomePage username={this.state.user.username} />
+  renderLoginPage = () => <Login handleAuthResponse={this.handleAuthResponse} />
+  // renderSignUpPage = () => <Login handleLoginOrSignup={this.handleSignup} showName={true}/>
+  
   renderPlatforms = (routerProps) => <PlatformCollection {...routerProps} />
   renderMediaPage = (routerProps) => <Media {...routerProps}/>
   renderCardPage = (routerProps) => <Card {...routerProps}/>
+  renderFaves = (routerProps) => <Faves {...routerProps}/>
+  renderAbout = (routerProps) => <About {...routerProps}/>
 
   render() {
-    const { user, error } = this.state
+    const { user} = this.props
     return (
       <div className="App">
-        <NavBar user={user} />
-        {/* handleLogout={this.handleLogout}  */}
-        
-
-        {/* {!!error && <h1>{error}</h1>} */}
+        <NavBar user={user} handleLogout={this.handleLogout} />
+        {/* <HomePage  /> */}
           <Switch>
             <Route path='/login' render={this.renderLoginPage} />
-            <Route path='/signup' render={this.renderSignUpPage} />
             <Route exact path='/platforms' render={this.renderPlatforms} />
-            {/* <Route exact path='/favorites' render={this.renderFaves} /> */}
-            {/* <Route exact path='/platforms/:company' render={this.renderPlatforms} /> */}
+            <Route exact path='/favorites' render={this.renderFaves} />
+            <Route exact path='/about' render={this.renderAbout} />
             <Route exact path='/platforms/:company' render={this.renderMediaPage} />
-            {/* <Route exact path='/platforms/:company/media' render={this.renderCardPage} /> */}
 
             {/* {!user.id && <Redirect to="/login" />} */}
             <Route exact path='/' render={this.renderHomePage} />
           </Switch>
-          {this.props.user.username}
+          {/* {this.props.user.username} */}
       </div>
     )
   }

@@ -1,0 +1,23 @@
+#hp {
+    font-family: Papyrus;
+    font-size: 60px;
+    color: #fff;
+    margin-top: 10px;
+    text-shadow: gray;
+}
+
+#hp_p {
+    font-family: Papyrus;
+    font-size: 25px;
+    color: #fff;
+    text-shadow: gray;
+}
+
+.links {
+  margin-left: 1150px;
+  padding: 10px;
+}
+
+/* #welcome, .links{
+    display: inline-flex;
+} */
