@@ -6,21 +6,19 @@ import '../styling/faves.css'
 
 export class Faves extends Component {
     renderFaves = () => {
-        return this.props.faves.map(faves => <MediaCard media={faves} key={faves.id} />)
+        return this.props.faves.map(faves => (
+        <Card>
+            <Image src={faves.image} size='tiny' wrapped ui={false} />
+            <Card.Content>
+                <Card.Header>{faves.title}</Card.Header>
+            </Card.Content>
+        </Card>
+        ))
     }
     render() {
-        const { media } = this.props
         return (
-            <div>
-                <div className="collection-div">
-                    {/* {this.renderFaves()}  */}
-                    <Card>
-                        <Image src={media?.image} wrapped ui={false} />
-                        <Card.Content>
-                            <Card.Header>{media?.title}</Card.Header>
-                        </Card.Content>
-                    </Card>
-                </div>
+            <div className="collection-div">
+                {this.renderFaves()} 
             </div>
         )
     }

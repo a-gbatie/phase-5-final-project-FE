@@ -94,9 +94,7 @@ class Login extends React.Component {
       //   </div>
       
       <div id='loginBG'>
-        <header>
-          <HomePage  />
-        </header>
+        <HomePage  />
         <div className='form'>
           <div className='tab-header'>
             <div className={this.state.showLogin && 'active'} onClick={() => this.handleClick(true)}>Login</div>

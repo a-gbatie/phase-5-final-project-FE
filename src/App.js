@@ -6,6 +6,7 @@ import Media from './components/Media'
 import Card from './components/MediaCard'
 import Faves from './components/Faves'
 import About from './components/About'
+import Random from './components/Random'
 import { Route, Switch, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PlatformCollection from './components/PlatformCollection'
@@ -18,8 +19,6 @@ class App extends React.Component {
   //   error: false,
   //   faves: []
   // }
-
-  // <h1>Bonne Nuit</h1>
 
   componentDidMount() {
     const token = localStorage.token
@@ -72,6 +71,7 @@ class App extends React.Component {
   renderCardPage = (routerProps) => <Card {...routerProps}/>
   renderFaves = (routerProps) => <Faves {...routerProps}/>
   renderAbout = (routerProps) => <About {...routerProps}/>
+  renderRandom = (routerProps) => <Random {...routerProps}/>
 
   render() {
     const { user} = this.props
@@ -84,6 +84,7 @@ class App extends React.Component {
             <Route exact path='/platforms' render={this.renderPlatforms} />
             <Route exact path='/favorites' render={this.renderFaves} />
             <Route exact path='/about' render={this.renderAbout} />
+            <Route exact path='/random' render={this.renderRandom} />
             <Route exact path='/platforms/:company' render={this.renderMediaPage} />
 
             {/* {!user.id && <Redirect to="/login" />} */}

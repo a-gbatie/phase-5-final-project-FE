@@ -5,9 +5,8 @@ import { Icon, Menu } from 'semantic-ui-react'
 const NavBar = ({ user, handleLogout }) => {
 
   return (
-    <header>
-      {/* <h1> Bonne Nuit</h1> */}
-      <ul className='links' >
+    // <header>
+      <ul className='links'>
         {Object.keys(user).length > 1 ? (
           <>
           <li>
@@ -44,6 +43,14 @@ const NavBar = ({ user, handleLogout }) => {
               <Icon className='faves' size='large' name='star'>Favorites</Icon>
             </Menu.Item>
           </li>
+          <li>
+            <Menu.Item
+              as={Link}
+              to='/random'
+            >
+              <Icon size='large' name='random'>Random</Icon>
+            </Menu.Item>
+          </li>
         </>
          ) : (
           <li>
@@ -59,7 +66,7 @@ const NavBar = ({ user, handleLogout }) => {
             </li>
         )}
       </ul>
-    </header>
+    /* </header> */
   )
 }
 

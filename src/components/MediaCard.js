@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
-// import Media from './Media'
 import '../styling/mediaCard.css'
 
 export default class MediaCard extends Component {
