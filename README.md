@@ -1,5 +1,8 @@
 # Bonne Nuit - date night app - in progress
 
+Backend link:
+https://github.com/a-gbatie/phase-5-final-project-BE
+
 This project was created with React/Redux, Javascript, and Ruby on Rails
 
 ## General Info
